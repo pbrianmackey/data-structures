@@ -15,7 +15,7 @@ jobs:
       - run: npm install -g @angular/cli > /dev/null
       - run: ng build --output-path docs --base-href /data-structures/
       - name: Publish generated content to GitHub Pages
-        uses: pbrianmackey/actions-publish-gh-pages@v1.0.1
+        uses: tsunematsu21/actions-publish-gh-pages@v1.0.1
         with:
           dir: docs
           branch: master
