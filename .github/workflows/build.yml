@@ -1,17 +1,16 @@
-name: End-to-end tests
-on: [push]
+name: CI
+on:
+  push:
+    branches: [master]
 jobs:
-  deploy-run:
-    runs-on: ubuntu-20.04
+  build:
+    runs-on: ubuntu-latest
+
     steps:
-    - uses: actions/checkout@v1
-    - name: Install Node
-      uses: actions/setup-node@v1
+      - uses: actions/checkout@v1
+      - uses: actions/setup-node@v1 #this will install Node and npm on Ubuntu
         with:
-            node-version: 16.17.0
-    - name: npm dependencies
-      run: npm install
-    - name: Build
-      run: npm run build -- --prod
-    - name: Checkout
-    - run: npm run build-deploy
+          node-version: "16.17.0"
+      - run: npm install
+      - run: npm install -g @angular/cli > /dev/null
+      - run: ng build --output-path docs --base-href /data-structures/
