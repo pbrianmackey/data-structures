@@ -6,13 +6,15 @@ import { AppComponent } from './app.component';
 import { LinkedListComponent } from './linked-list/linked-list.component';
 import { QueueComponent } from './queue/queue.component';
 import { StackComponent } from './stack/stack.component';
+import { GraphComponent } from './graph/graph.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     LinkedListComponent,
     QueueComponent,
-    StackComponent
+    StackComponent,
+    GraphComponent
   ],
   imports: [
     BrowserModule,
