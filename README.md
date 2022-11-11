@@ -1,6 +1,11 @@
 # Data Structures
 
-This is a list of data structures written in TypeScript
+This is a list of data structures written in TypeScript:
+
+- Linked List
+- Queue
+- Stack
+- Graph
 
 # Github Pages Host URL:
 
