@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Stack } from 'src/Models/Stack';
 
 @Component({
@@ -9,25 +10,43 @@ import { Stack } from 'src/Models/Stack';
 export class StackComponent implements OnInit {
   output: string[] = [];
   size: number = -1;
+  stackFormGroup: FormGroup;
+  stack = new Stack<string>();
+  public removedItem: string | undefined = '';
 
-  constructor() {}
+  get pushInput(): FormControl {
+    return this.stackFormGroup.controls['pushInput'] as FormControl;
+  }
+
+  constructor(private fb: FormBuilder) {
+    this.stackFormGroup = fb.group({
+      pushInput: [''],
+    });
+  }
 
   ngOnInit(): void {
     this.setup();
   }
 
+  pushItem() {
+    this.stack.push(this.pushInput.value);
+    this.output = this.stack.toArray();
+    this.size = this.stack.size();
+  }
+
+  popItem(): void {
+    this.removedItem = this.stack.pop();
+    this.output = this.stack.toArray();
+    this.size = this.stack.size();
+  }
+
   private setup(): void {
-    const stack = new Stack<string>();
-    stack.push('A');
-    stack.push('B');
+    this.stack.push('A');
+    this.stack.push('B');
 
-    this.output = stack.toArray();
-    this.size = stack.size();
+    this.output = this.stack.toArray();
+    this.size = this.stack.size();
 
-    //stack.size(); // Output: 2
     //stack.peek(); // Output: "B"
-    //stack.size(); // Output: 2
-    //stack.pop(); // Output: "B"
-    //stack.size(); // Output: 1
   }
 }
