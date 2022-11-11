@@ -43,6 +43,7 @@ export class StackComponent implements OnInit {
   private setup(): void {
     this.stack.push('A');
     this.stack.push('B');
+    this.stack.push('C');
 
     this.output = this.stack.toArray();
     this.size = this.stack.size();

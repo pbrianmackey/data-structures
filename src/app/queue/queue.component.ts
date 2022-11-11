@@ -43,6 +43,7 @@ export class QueueComponent implements OnInit {
   private setup(): void {
     this.queue.enqueue('A');
     this.queue.enqueue('B');
+    this.queue.enqueue('C');
 
     this.output = this.queue.toArray();
     this.size = this.queue.size();
