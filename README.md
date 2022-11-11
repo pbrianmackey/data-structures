@@ -18,3 +18,5 @@ https://www.youtube.com/watch?v=DuDz6B4cqVc&t=325s&ab_channel=CrashCourse
 https://dev.to/glebirovich/typescript-data-structures-stack-and-queue-hld
 
 https://ricardoborges.dev/data-structures-in-typescript-graph
+
+https://www.geeksforgeeks.org/data-structures/
