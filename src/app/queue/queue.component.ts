@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { Queue } from '../../Models/Queue';
 
 @Component({
@@ -9,21 +10,42 @@ import { Queue } from '../../Models/Queue';
 export class QueueComponent implements OnInit {
   output: string[] = [];
   size: number = -1;
+  queueFormGroup: FormGroup;
+  public queue = new Queue<string>();
+  public removedItem: string | undefined = '';
 
-  constructor() {}
+  get enqueueInput(): FormControl {
+    return this.queueFormGroup.controls['enqueueInput'] as FormControl;
+  }
+
+  constructor(private fb: FormBuilder) {
+    this.queueFormGroup = fb.group({
+      enqueueInput: [''],
+    });
+  }
 
   ngOnInit(): void {
     this.setup();
   }
 
+  enqueueItem() {
+    this.queue.enqueue(this.enqueueInput.value);
+    this.output = this.queue.toArray();
+    this.size = this.queue.size();
+  }
+
+  dequeueItem(): void {
+    this.removedItem = this.queue.dequeue();
+    this.output = this.queue.toArray();
+    this.size = this.queue.size();
+  }
+
   private setup(): void {
-    const queue = new Queue<string>();
+    this.queue.enqueue('A');
+    this.queue.enqueue('B');
 
-    queue.enqueue('A');
-    queue.enqueue('B');
-
-    this.output = queue.toArray();
-    this.size = queue.size();
+    this.output = this.queue.toArray();
+    this.size = this.queue.size();
 
     //queue.dequeue(); // Output: "A"
     //queue.size(); // Output: 1

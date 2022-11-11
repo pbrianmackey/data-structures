@@ -7,6 +7,7 @@ import { LinkedListComponent } from './linked-list/linked-list.component';
 import { QueueComponent } from './queue/queue.component';
 import { StackComponent } from './stack/stack.component';
 import { GraphComponent } from './graph/graph.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -14,13 +15,10 @@ import { GraphComponent } from './graph/graph.component';
     LinkedListComponent,
     QueueComponent,
     StackComponent,
-    GraphComponent
+    GraphComponent,
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
+  imports: [BrowserModule, AppRoutingModule, ReactiveFormsModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

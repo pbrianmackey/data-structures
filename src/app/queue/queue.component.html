@@ -1,7 +1,30 @@
 <h1>Queue (FIFO - First In First Out)</h1>
 
+<ul class="flex-container">
+  <li class="flex-item">
+    <label for="enqueue" minlength="1">Item to add to queue: </label>
+  </li>
+  <li class="flex-item">
+    <input
+      [formControl]="enqueueInput"
+      type="text"
+      id="enqueue"
+      name="enqueue"
+      size="10"
+    />
+  </li>
+  <li class="flex-item">
+    <button type="button" (click)="enqueueItem()">Push</button>
+  </li>
+  <li class="flex-item">
+    <button type="button" (click)="dequeueItem()">Pop</button>
+  </li>
+</ul>
+
+<ng-container *ngIf="removedItem">
+  Last item removed from the queue: {{ removedItem }}
+</ng-container>
 <ul>
   <li *ngFor="let item of output">{{ item }}</li>
 </ul>
-
-Size of Queue: {{ size }}
+<div>Size of Queue: {{ size }}</div>
