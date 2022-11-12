@@ -14,7 +14,7 @@ export class GraphComponent implements OnInit {
   }
 
   private setup(): void {
-    function comparator(a: number, b: number) {
+    let comparator = (a: number, b: number): number => {
       if (a < b) return -1;
 
       if (a > b) return 1;

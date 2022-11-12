@@ -6,6 +6,8 @@ import { Queue } from './Queue';
  */
 export class Graph<T> {
   nodes: Map<T, GraphNode<T>> = new Map();
+  // See: Function Type Expressions
+  // https://www.typescriptlang.org/docs/handbook/2/functions.html
   comparator: (a: T, b: T) => number;
 
   constructor(comparator: (a: T, b: T) => number) {
